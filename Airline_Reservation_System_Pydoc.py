@@ -1,3 +1,10 @@
+"""
+Airline Reservation System
+Author: Amir Shabo
+Group: One Man Band
+Description: This module implements an airline reservation system with admin controls.
+"""
+
 import tkinter as tk # Import the Tkinter library to create the GUI
 from tkinter import messagebox # For showing popup messages
 import json # To save and load booking data
@@ -5,17 +12,32 @@ import os # To check if the bookings file exists
 
 # Flight Class to store info about each flight
 class Flight:
+    """
+    Represents a flight with a code, destination, and date/time.
+
+    Attributes:
+        code (str): The flight code.
+        destination (str): The flight destination.
+        date_time (str): The date and time of the flight.
+    """
     def __init__(self, code, destination, date_time):
         self.code = code # Flight code (like LA123)
         self.destination = destination # Where the flight is going
         self.date_time = date_time # When the flight is leaving
 
     def __str__(self):
-        # This helps print the flight info in a readable way
+        """Returns a readable string representation of the flight."""
         return f"{self.code}: {self.destination} at {self.date_time}"
     
 # Reservation system class to manage all bookings and flights
 class ReservationSystem:
+    """
+    Manages flights and user bookings.
+
+    Attributes:
+        flights (list): List of available Flight objects.
+        bookings (dict): Dictionary of user bookings (name: flight_code).
+    """
     def __init__(self):
         self.flights = [] # List to store all flights
         self.bookings = {} # Dictionary to store user bookings
@@ -23,7 +45,7 @@ class ReservationSystem:
         self.load_bookings() # Load previous bookings if any
     
     def load_flights(self):
-        # Here we just add 3 flights manually
+        """Loads a preset list of flights into the system."""
         self.flights = [
             Flight("LA123", "Los Angeles", "2025-05-01 10:00"),
             Flight("TX456", "Texas", "2025-05-02 14:30"),
@@ -31,7 +53,7 @@ class ReservationSystem:
         ]
     
     def load_bookings(self):
-        # Load bookings from the JSON file if it exists
+        """Loads existing bookings from a JSON file if it exists."""
         if os.path.exists("bookings.json"):
             with open("bookings.json", "r") as f:
                 self.bookings = json.load(f)
@@ -42,13 +64,31 @@ class ReservationSystem:
             json.dump(self.bookings, f)
 
     def get_flight(self, code):
-        # Find a flight object by its code
+        """
+        Returns a Flight object matching the given flight code.
+
+        Args:
+            code (str): The flight code to search.
+
+        Returns:
+            Flight or None: The flight object or None if not found.
+        """
         for flight in self.flights:
             if flight.code == code:
                 return flight
         return None  # If not found, return nothing
 
     def book_flight(self, name, code):
+        """
+        Books a flight for a user.
+
+        Args:
+            name (str): The user's name.
+            code (str): The flight code.
+
+        Returns:
+            Flight or None: The booked flight or None if failed.
+        """
         flight = self.get_flight(code)  # Look up the flight
         if name and flight:
             self.bookings[name] = code  # Save the booking
@@ -57,12 +97,30 @@ class ReservationSystem:
         return None  # If something went wrong
 
     def view_booking(self, name):
+        """
+        Returns the booked flight for a given user.
+
+        Args:
+            name (str): The user's name.
+
+        Returns:
+            Flight or None: The user's booked flight.
+        """
         code = self.bookings.get(name)  # Get the flight code
         if code:
             return self.get_flight(code)  # Return the flight object
         return None  # If not booked
 
     def cancel_booking(self, name):
+        """
+        Cancels the booking for a given user.
+
+        Args:
+            name (str): The user's name.
+
+        Returns:
+            bool: True if booking was canceled, False otherwise.
+        """
         if name in self.bookings:
             del self.bookings[name]  # Remove the booking
             self.save_bookings()  # Save changes
@@ -307,6 +365,12 @@ tk.Button(add_flight_frame, text="Back", command=lambda: show_frame(manage_fligh
 
 # Function to switch between frames
 def show_frame(frame): # Function changes which page I see
+    """
+    Raises the given frame to the top of the window stack.
+
+    Args:
+        frame (tk.Frame): The frame to display.
+    """
     frame.tkraise() # Brings the chosen frame to the front
 
 # Show main menu when app starts
@@ -314,3 +378,4 @@ show_frame(login_frame)
 
 # Run the app
 window.mainloop()
+

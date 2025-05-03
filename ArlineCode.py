@@ -162,21 +162,43 @@ tk.Button(main_frame, text="Logout", command=lambda: show_frame(login_frame)).pa
 
 # Booking UI
 tk.Label(booking_frame, text="Book a Flight", font=("Arial", 16)).pack(pady=10)
+
 tk.Label(booking_frame, text="Your Name:").pack()
-name_entry = tk.Entry(booking_frame)  # Text box for name
+name_entry = tk.Entry(booking_frame)
 name_entry.pack()
 
-tk.Label(booking_frame, text="Flight Code:").pack()
-flight_entry = tk.Entry(booking_frame)  # Text box for flight code
-flight_entry.pack()
+tk.Label(booking_frame, text="Select Flight:").pack()
 
-# Function when "Book" is clicked
+# Dropdown menu for available flights
+flight_var = tk.StringVar()
+flight_var.set(system.flights[0].code if system.flights else "")  # Set default
+
+# Show description of selected flight
+selected_flight_label = tk.Label(booking_frame, text="", fg="gray")
+selected_flight_label.pack()
+
+def update_flight_info(*args):
+    code = flight_var.get()
+    flight = system.get_flight(code)
+    if flight:
+        selected_flight_label.config(text=f"{flight.destination} at {flight.date_time}")
+    else:
+        selected_flight_label.config(text="")
+
+flight_var.trace("w", update_flight_info)
+
+flight_options = [flight.code for flight in system.flights]
+flight_menu = tk.OptionMenu(booking_frame, flight_var, *flight_options)
+flight_menu.pack()
+
+# Function to handle booking a flight
 def handle_booking():
-    name = name_entry.get()
-    code = flight_entry.get()
+    name = name_entry.get().strip()
+    code = flight_var.get()
     flight = system.book_flight(name, code)
     if flight:
         messagebox.showinfo("Success", f"{name} booked on {flight}")
+        name_entry.delete(0, tk.END)
     else:
         messagebox.showerror("Error", "Invalid name or flight code.")
 

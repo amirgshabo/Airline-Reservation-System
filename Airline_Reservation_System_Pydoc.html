@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module Airline_Reservation_System_Pydoc</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">Airline_Reservation_System_Pydoc</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cschool%5Cairline%20reservation%20system%5Cairline_reservation_system_pydoc.py">d:\school\airline reservation system\airline_reservation_system_pydoc.py</a></td></tr></table>
+    <p><span class="code">Airline&nbsp;Reservation&nbsp;System<br>
+Author:&nbsp;Amir&nbsp;Shabo<br>
+Group:&nbsp;One&nbsp;Man&nbsp;Band<br>
+Description:&nbsp;This&nbsp;module&nbsp;implements&nbsp;an&nbsp;airline&nbsp;reservation&nbsp;system&nbsp;with&nbsp;admin&nbsp;controls.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="tkinter.messagebox.html">tkinter.messagebox</a><br>
+</td><td class="multicolumn"><a href="os.html">os</a><br>
+</td><td class="multicolumn"><a href="tkinter.html">tkinter</a><br>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="Airline_Reservation_System_Pydoc.html#Flight">Flight</a>
+</dt><dt class="heading-text"><a href="Airline_Reservation_System_Pydoc.html#ReservationSystem">ReservationSystem</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Flight">class <strong>Flight</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Flight">Flight</a>(code,&nbsp;destination,&nbsp;date_time)<br>
+&nbsp;<br>
+Represents&nbsp;a&nbsp;flight&nbsp;with&nbsp;a&nbsp;code,&nbsp;destination,&nbsp;and&nbsp;date/time.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;(str):&nbsp;The&nbsp;flight&nbsp;code.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;(str):&nbsp;The&nbsp;flight&nbsp;destination.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;date_time&nbsp;(str):&nbsp;The&nbsp;date&nbsp;and&nbsp;time&nbsp;of&nbsp;the&nbsp;flight.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Flight-__init__"><strong>__init__</strong></a>(self, code, destination, date_time)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="Flight-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Returns&nbsp;a&nbsp;readable&nbsp;string&nbsp;representation&nbsp;of&nbsp;the&nbsp;flight.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ReservationSystem">class <strong>ReservationSystem</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Manages&nbsp;flights&nbsp;and&nbsp;user&nbsp;bookings.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;flights&nbsp;(list):&nbsp;List&nbsp;of&nbsp;available&nbsp;<a href="#Flight">Flight</a>&nbsp;objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bookings&nbsp;(dict):&nbsp;Dictionary&nbsp;of&nbsp;user&nbsp;bookings&nbsp;(name:&nbsp;flight_code).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="ReservationSystem-__init__"><strong>__init__</strong></a>(self)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-book_flight"><strong>book_flight</strong></a>(self, name, code)</dt><dd><span class="code">Books&nbsp;a&nbsp;flight&nbsp;for&nbsp;a&nbsp;user.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;The&nbsp;user's&nbsp;name.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;(str):&nbsp;The&nbsp;flight&nbsp;code.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Flight">Flight</a>&nbsp;or&nbsp;None:&nbsp;The&nbsp;booked&nbsp;flight&nbsp;or&nbsp;None&nbsp;if&nbsp;failed.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-cancel_booking"><strong>cancel_booking</strong></a>(self, name)</dt><dd><span class="code">Cancels&nbsp;the&nbsp;booking&nbsp;for&nbsp;a&nbsp;given&nbsp;user.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;The&nbsp;user's&nbsp;name.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool:&nbsp;True&nbsp;if&nbsp;booking&nbsp;was&nbsp;canceled,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-get_flight"><strong>get_flight</strong></a>(self, code)</dt><dd><span class="code">Returns&nbsp;a&nbsp;<a href="#Flight">Flight</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;matching&nbsp;the&nbsp;given&nbsp;flight&nbsp;code.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;(str):&nbsp;The&nbsp;flight&nbsp;code&nbsp;to&nbsp;search.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Flight">Flight</a>&nbsp;or&nbsp;None:&nbsp;The&nbsp;flight&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;None&nbsp;if&nbsp;not&nbsp;found.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-load_bookings"><strong>load_bookings</strong></a>(self)</dt><dd><span class="code">Loads&nbsp;existing&nbsp;bookings&nbsp;from&nbsp;a&nbsp;JSON&nbsp;file&nbsp;if&nbsp;it&nbsp;exists.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-load_flights"><strong>load_flights</strong></a>(self)</dt><dd><span class="code">Loads&nbsp;a&nbsp;preset&nbsp;list&nbsp;of&nbsp;flights&nbsp;into&nbsp;the&nbsp;system.</span></dd></dl>
+
+<dl><dt><a name="ReservationSystem-save_bookings"><strong>save_bookings</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ReservationSystem-view_booking"><strong>view_booking</strong></a>(self, name)</dt><dd><span class="code">Returns&nbsp;the&nbsp;booked&nbsp;flight&nbsp;for&nbsp;a&nbsp;given&nbsp;user.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;(str):&nbsp;The&nbsp;user's&nbsp;name.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Flight">Flight</a>&nbsp;or&nbsp;None:&nbsp;The&nbsp;user's&nbsp;booked&nbsp;flight.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-add_new_flight"><strong>add_new_flight</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;to&nbsp;handle&nbsp;adding&nbsp;a&nbsp;new&nbsp;flight</span></dd></dl>
+ <dl><dt><a name="-display_flights"><strong>display_flights</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;to&nbsp;load&nbsp;and&nbsp;display&nbsp;the&nbsp;flights</span></dd></dl>
+ <dl><dt><a name="-handle_admin_login"><strong>handle_admin_login</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;for&nbsp;Admin&nbsp;Login&nbsp;page</span></dd></dl>
+ <dl><dt><a name="-handle_booking"><strong>handle_booking</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;when&nbsp;"Book"&nbsp;is&nbsp;clicked</span></dd></dl>
+ <dl><dt><a name="-handle_cancel"><strong>handle_cancel</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;when&nbsp;"Cancel&nbsp;Booking"&nbsp;is&nbsp;clicked</span></dd></dl>
+ <dl><dt><a name="-handle_user_login"><strong>handle_user_login</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;to&nbsp;handle&nbsp;User&nbsp;login</span></dd></dl>
+ <dl><dt><a name="-handle_view"><strong>handle_view</strong></a>()</dt><dd><span class="code">#&nbsp;Function&nbsp;when&nbsp;"View"&nbsp;is&nbsp;clicked</span></dd></dl>
+ <dl><dt><a name="-show_frame"><strong>show_frame</strong></a>(frame)</dt><dd><span class="code">Raises&nbsp;the&nbsp;given&nbsp;frame&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;window&nbsp;stack.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;frame&nbsp;(tk.Frame):&nbsp;The&nbsp;frame&nbsp;to&nbsp;display.</span></dd></dl>
+ <dl><dt><a name="-show_manage_flights"><strong>show_manage_flights</strong></a>()</dt><dd><span class="code">#&nbsp;Call&nbsp;<a href="#-display_flights">display_flights</a>()&nbsp;whenever&nbsp;this&nbsp;page&nbsp;is&nbsp;shown</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>add_flight_frame</strong> = &lt;tkinter.Frame object .!frame8&gt;<br>
+<strong>admin_frame</strong> = &lt;tkinter.Frame object .!frame6&gt;<br>
+<strong>booking_frame</strong> = &lt;tkinter.Frame object .!frame3&gt;<br>
+<strong>cancel_frame</strong> = &lt;tkinter.Frame object .!frame5&gt;<br>
+<strong>cancel_name_entry</strong> = &lt;tkinter.Entry object .!frame5.!entry&gt;<br>
+<strong>flight_entry</strong> = &lt;tkinter.Entry object .!frame3.!entry2&gt;<br>
+<strong>flights_text</strong> = &lt;tkinter.Text object .!frame7.!text&gt;<br>
+<strong>frame</strong> = &lt;tkinter.Frame object .!frame8&gt;<br>
+<strong>login_frame</strong> = &lt;tkinter.Frame object .!frame&gt;<br>
+<strong>login_var</strong> = &lt;tkinter.StringVar object&gt;<br>
+<strong>main_frame</strong> = &lt;tkinter.Frame object .!frame2&gt;<br>
+<strong>manage_flights_frame</strong> = &lt;tkinter.Frame object .!frame7&gt;<br>
+<strong>name_entry</strong> = &lt;tkinter.Entry object .!frame3.!entry&gt;<br>
+<strong>new_code_entry</strong> = &lt;tkinter.Entry object .!frame8.!entry&gt;<br>
+<strong>new_datetime_entry</strong> = &lt;tkinter.Entry object .!frame8.!entry3&gt;<br>
+<strong>new_destination_entry</strong> = &lt;tkinter.Entry object .!frame8.!entry2&gt;<br>
+<strong>system</strong> = &lt;Airline_Reservation_System_Pydoc.ReservationSystem object&gt;<br>
+<strong>view_frame</strong> = &lt;tkinter.Frame object .!frame4&gt;<br>
+<strong>view_name_entry</strong> = &lt;tkinter.Entry object .!frame4.!entry&gt;<br>
+<strong>window</strong> = &lt;tkinter.Tk object .&gt;</td></tr></table>
+</body></html>

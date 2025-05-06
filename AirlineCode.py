@@ -23,12 +23,31 @@ class ReservationSystem:
         self.load_bookings() # Load previous bookings if any
     
     def load_flights(self):
-        # Here we just add 3 flights manually
-        self.flights = [
-            Flight("LA123", "Los Angeles", "2025-05-01 10:00"),
-            Flight("TX456", "Texas", "2025-05-02 14:30"),
-            Flight("NY789", "New York", "2025-05-03 18:00")
+        # Load flights from file if it exists
+        if os.path.exists("flights.json"):
+            with open("flights.json", "r") as f:
+                flights_data = json.load(f)
+                self.flights = [Flight(f["code"], f["destination"], f["date_time"]) for f in flights_data]
+        else:
+        # If no file, start with 3 default flights
+            self.flights = [
+                Flight("LA123", "Los Angeles", "2025-05-01 10:00"),
+                Flight("TX456", "Texas", "2025-05-02 14:30"),
+                Flight("NY789", "New York", "2025-05-03 18:00")
         ]
+            self.save_flights()  # Save them to file
+    
+    def save_flights(self):
+        # Save all flights to a file so they don't get lost after closing
+        with open("flights.json", "w") as f:
+            flights_data = []
+            for flight in self.flights:
+                flights_data.append({
+                    "code": flight.code,
+                    "destination": flight.destination,
+                    "date_time": flight.date_time
+            })
+            json.dump(flights_data, f)
     
     def load_bookings(self):
         # Load bookings from the JSON file if it exists
@@ -68,6 +87,20 @@ class ReservationSystem:
             self.save_bookings()  # Save changes
             return True
         return False  # Nothing to cancel
+    
+    def delete_flight(self, code):
+        # Check if flight exists
+        flight = self.get_flight(code)
+        if not flight:
+            return False  # Flight not found
+        # Check if any bookings exist for this flight
+        for name, booked_code in self.bookings.items():
+            if booked_code == code:
+                return False  # Can't delete, flight is booked
+        # Remove the flight
+        self.flights = [f for f in self.flights if f.code != code]
+        self.save_flights()
+        return True
 
 #-------------------------------------GUI SETUP------------------------------------------------#
 
@@ -268,6 +301,27 @@ flights_text.pack(pady=5)
 # Add Flight button in Manage Flights frame
 tk.Button(manage_flights_frame, text="Add Flight", command=lambda: show_frame(add_flight_frame)).pack(pady=10)
 
+# Entry and button to delete a flight
+tk.Label(manage_flights_frame, text="Flight Code to Delete:").pack()
+delete_code_entry = tk.Entry(manage_flights_frame)
+delete_code_entry.pack()
+
+def handle_delete_flight():
+    code = delete_code_entry.get().strip()
+    if system.delete_flight(code):
+        messagebox.showinfo("Success", f"Flight {code} deleted.")
+        display_flights()  # Refresh the flight list
+        delete_code_entry.delete(0, tk.END)
+        # Update the flight menu dropdown
+        flight_menu["menu"].delete(0, "end")
+        for flight in system.flights:
+            flight_menu["menu"].add_command(label=flight.code, command=tk._setit(flight_var, flight.code))
+        flight_var.set(system.flights[0].code if system.flights else "")
+    else:
+        messagebox.showerror("Error", "Flight not found or has bookings.")
+
+tk.Button(manage_flights_frame, text="Delete Flight", command=handle_delete_flight).pack(pady=5)
+
 # Back button
 tk.Button(manage_flights_frame, text="Back", command=lambda: show_frame(admin_frame)).pack(pady=10)
 
@@ -306,6 +360,12 @@ def add_new_flight():
 
     # Add the flight to the system's list
     system.flights.append(new_flight)
+
+    # Save the new flight so it stays after closing the program
+    system.save_flights()
+
+    # Update the flight menu dropdown (user side)
+    flight_menu["menu"].add_command(label=code, command=tk._setit(flight_var, code))
 
     # Show a message to confirm it worked
     messagebox.showinfo("Success", f"Flight {code} added successfully!")
